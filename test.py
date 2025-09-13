@@ -4,10 +4,6 @@ import random
 import time
 
 
-
-#ПРОСТО СДЕЛАЮ КОММИТ ЧТОБЫ ЕГО ПОТОМ ОТМЕНИТЬ, ПОРАБОТАТЬ С ГИТОМ))#
-
-
 cursor = None
 connection = None
 
