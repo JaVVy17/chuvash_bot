@@ -13,7 +13,7 @@ def init_bd():
     global connection, cursor
     try:
         print('DataBase was launched')
-        with sqlite3.connect('DataBase.db') as connection:
+        with sqlite3.connect('database/DataBase.bd') as connection:
             cursor = connection.cursor()
 
             cursor.execute('''
