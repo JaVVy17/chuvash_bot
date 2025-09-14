@@ -109,7 +109,8 @@ def is_translation_correct(random_word, user_word):
         
 
         if chuvash_word_id is not None:
-            cursor.execute(f'SELECT id FROM russian_words WHERE russian="{user_word}" ') #есть какие то EXISTS #также это еще и небезопасный варик :/ почитать почему
+            # cursor.execute(f'SELECT id FROM russian_words WHERE russian="{user_word}" ') #есть какие то EXISTS #также это еще и небезопасный варик :/ почитать почему
+            cursor.execute('SELECT id FROM russian_words WHERE russian=?', (user_word,))
             user_word_id = cursor.fetchone()
 
             if user_word_id is None:
