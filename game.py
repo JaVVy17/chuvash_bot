@@ -67,16 +67,35 @@ def print_game_over(final_score, target_score):
     print("\nСпасибо за игру! Возвращайся скорее! 👋")
 
     
-def print_score(current_score, target_score):
-    """Красивое отображение счета"""
-    progress = min(current_score / target_score * 100, 100) if target_score > 0 else 0
+# def print_score(current_score, target_score):
+#     """Красивое отображение счета"""
+#     progress = min(current_score / target_score * 100, 100) if target_score > 0 else 0
     
-    print(f"\n⭐ ТВОЙ СЧЕТ: {current_score}/{target_score}")
-    print(f"📊 Прогресс: [{ '█' * int(progress/5) }{ '░' * (20 - int(progress/5)) }] {progress:.1f}%")
+#     print(f"\n⭐ ТВОЙ СЧЕТ: {current_score}/{target_score}")
+#     print(f"📊 Прогресс: [{ '█' * int(progress/5) }{ '░' * (20 - int(progress/5)) }] {progress:.1f}%")
+    
+#     if current_score > 0:
+#         print(f"🎯 Осталось набрать: {max(0, target_score - current_score)} очков")
+#     print()    
+
+
+
+def print_score(current_score, target_score):
+    """Красивое отображение счета для HTML"""
+    progress = min(current_score / target_score * 100, 100) if target_score > 0 else 0
+    filled_blocks = int(progress / 5)
+    empty_blocks = 20 - filled_blocks
+    
+    score_text = f"""
+<b>⭐ ТВОЙ СЧЕТ:</b> {current_score}/{target_score}
+<b>📊 Прогресс:</b> [{'█' * filled_blocks}{'░' * empty_blocks}] {progress:.1f}%
+"""
     
     if current_score > 0:
-        print(f"🎯 Осталось набрать: {max(0, target_score - current_score)} очков")
-    print()    
+        score_text += f"<b>🎯 Осталось набрать:</b> {max(0, target_score - current_score)} очков\n"
+    
+    return score_text
+
 
 
 def start_game():
